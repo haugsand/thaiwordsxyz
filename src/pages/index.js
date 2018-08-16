@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 
 export default ({data}) => {
@@ -13,7 +13,9 @@ export default ({data}) => {
             <ul>
                  {data.allEnglishThaiWord.edges.map(({ node }, index) => (
                   <li key={index}>
-                    {node.english} - {node.thai}
+                    <Link to={node.slug} >
+                        {node.english} - {node.thai}
+                    </Link>
                   </li>
                 ))}
             </ul>
@@ -27,7 +29,8 @@ export const query = graphql`
       edges {
         node {
           english,
-          thai
+          thai,
+          slug
         }
       } 
     }

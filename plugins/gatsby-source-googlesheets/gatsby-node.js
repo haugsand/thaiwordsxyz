@@ -5,11 +5,6 @@ exports.sourceNodes = ({ actions, createNodeId }, configOptions) => {
 
     const { createNode } = actions
 
-
-
-    console.log("Testing my plugin", configOptions)
-
-
     const sheetUrl = "https://spreadsheets.google.com/feeds/list/" + configOptions.sheetId + "/od6/public/values?alt=json"; 
 
     return (
