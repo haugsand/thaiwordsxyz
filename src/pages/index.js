@@ -1,5 +1,36 @@
 import React from "react"
+import { graphql } from "gatsby"
 
-/* https://spreadsheets.google.com/feeds/list/1OMXjKn9FVIMDmBOu_gaJ32QCDoHm1PiSLkYF6rN0WWM/od6/public/values?alt=json */
 
-export default () => <div>thaiwords.xyz 2nd deploy</div>
+export default ({data}) => {
+
+    console.log(data);
+
+    return (
+        <main>
+            <h1>thaiwords.xyz</h1>
+
+            <ul>
+                 {data.allEnglishThaiWord.edges.map(({ node }, index) => (
+                  <li key={index}>
+                    {node.english} - {node.thai}
+                  </li>
+                ))}
+            </ul>
+        </main>
+    )
+}
+
+export const query = graphql`
+  query {
+    allEnglishThaiWord {
+      edges {
+        node {
+          english,
+          thai
+        }
+      } 
+    }
+  }
+`
+
